@@ -26,19 +26,22 @@ class User:
         
     @staticmethod
     def validate(data):
+        first_name=data["user_name"]
+        email=data["email"]
+        password=data["password"]
         is_valid=True
         if len(data["user_name"])<2:
             is_valid=False
-            flash("user Name needs to have at least 3 characters","user_name")
+            flash("user Name needs to have at least 3 characters","user_name_validation")
         if not EMAIL_REGEX.match(data["email"]): 
-            flash("Invalid email address!","email")
+            flash("Invalid email address!","email_validation")
             is_valid = False
         elif User.get_by_email({"email":data["email"]}):
             flash("email already in database","email")
             is_valid = False
         if len(data["password"])<8:
             is_valid=False
-            flash("Password not strong enough","password")
+            flash("Password not strong enough","password_validation")
         return is_valid
         
                 

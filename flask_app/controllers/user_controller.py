@@ -36,11 +36,11 @@ def login():
 def submit_login():
     user=User.get_by_email(request.form)
     if user==None:
-        return redirect("/")
+        return redirect("/login")
     elif not bcrypt.check_password_hash(request.form["password"],user.password):
             flash("Invalid Email/Password","login_password_validation")
-            return redirect("/")
+            return redirect("/login")
     else:
         session["user_id"]=user.id
         session["name"]=user.user_name
-        return redirect("/login")
+        return redirect("/home")

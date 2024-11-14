@@ -94,7 +94,7 @@ form {
 
 .input-group .icon {
     position: absolute;
-    top: 50%;
+    top: 35%;
     right: 15px;
     transform: translateY(-50%);
     font-size: 1.2em;
